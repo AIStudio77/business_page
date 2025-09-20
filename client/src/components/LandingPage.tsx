@@ -1,7 +1,7 @@
 import MuiNavigation from './MuiNavigation';
 import ServiceCarousel from './ServiceCarousel';
 import ContentDisplay from './ContentDisplay';
-import { Box, Container, Typography, Grid, Card, CardContent, Button } from '@mui/material';
+import { Box, Container, Typography, Card, CardContent, Button } from '@mui/material';
 
 export default function LandingPage() {
   return (
@@ -71,148 +71,142 @@ export default function LandingPage() {
               Why Choose TechFlow?
             </Typography>
             
-            <Grid container spacing={4}>
-              <Grid item xs={12} md={4}>
-                <Card 
-                  sx={{ 
-                    textAlign: 'center', 
-                    p: 3,
-                    height: '100%',
-                    transition: 'transform 0.2s ease-in-out',
-                    '&:hover': {
-                      transform: 'translateY(-4px)'
-                    }
-                  }}
-                  data-testid="feature-innovation"
-                >
-                  <CardContent>
+            <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: 'repeat(3, 1fr)' }, gap: 4 }}>
+              <Card 
+                sx={{ 
+                  textAlign: 'center', 
+                  p: 3,
+                  height: '100%',
+                  transition: 'transform 0.2s ease-in-out',
+                  '&:hover': {
+                    transform: 'translateY(-4px)'
+                  }
+                }}
+                data-testid="feature-innovation"
+              >
+                <CardContent>
+                  <Box
+                    sx={{
+                      width: 64,
+                      height: 64,
+                      backgroundColor: 'primary.main',
+                      opacity: 0.1,
+                      borderRadius: 2,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      mx: 'auto',
+                      mb: 3
+                    }}
+                  >
                     <Box
                       sx={{
-                        width: 64,
-                        height: 64,
+                        width: 32,
+                        height: 32,
                         backgroundColor: 'primary.main',
-                        opacity: 0.1,
-                        borderRadius: 2,
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        mx: 'auto',
-                        mb: 3
+                        borderRadius: 1
                       }}
-                    >
-                      <Box
-                        sx={{
-                          width: 32,
-                          height: 32,
-                          backgroundColor: 'primary.main',
-                          borderRadius: 1
-                        }}
-                      />
-                    </Box>
-                    <Typography variant="h5" sx={{ fontWeight: 600, mb: 2, color: 'text.primary' }}>
-                      Innovation First
-                    </Typography>
-                    <Typography variant="body1" sx={{ color: 'text.secondary' }}>
-                      We stay ahead of technology trends to bring you tomorrow's solutions today.
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </Grid>
+                    />
+                  </Box>
+                  <Typography variant="h5" sx={{ fontWeight: 600, mb: 2, color: 'text.primary' }}>
+                    Innovation First
+                  </Typography>
+                  <Typography variant="body1" sx={{ color: 'text.secondary' }}>
+                    We stay ahead of technology trends to bring you tomorrow's solutions today.
+                  </Typography>
+                </CardContent>
+              </Card>
               
-              <Grid item xs={12} md={4}>
-                <Card 
-                  sx={{ 
-                    textAlign: 'center', 
-                    p: 3,
-                    height: '100%',
-                    transition: 'transform 0.2s ease-in-out',
-                    '&:hover': {
-                      transform: 'translateY(-4px)'
-                    }
-                  }}
-                  data-testid="feature-reliability"
-                >
-                  <CardContent>
+              <Card 
+                sx={{ 
+                  textAlign: 'center', 
+                  p: 3,
+                  height: '100%',
+                  transition: 'transform 0.2s ease-in-out',
+                  '&:hover': {
+                    transform: 'translateY(-4px)'
+                  }
+                }}
+                data-testid="feature-reliability"
+              >
+                <CardContent>
+                  <Box
+                    sx={{
+                      width: 64,
+                      height: 64,
+                      backgroundColor: 'secondary.main',
+                      opacity: 0.1,
+                      borderRadius: 2,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      mx: 'auto',
+                      mb: 3
+                    }}
+                  >
                     <Box
                       sx={{
-                        width: 64,
-                        height: 64,
+                        width: 32,
+                        height: 32,
                         backgroundColor: 'secondary.main',
-                        opacity: 0.1,
-                        borderRadius: 2,
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        mx: 'auto',
-                        mb: 3
+                        borderRadius: 1
                       }}
-                    >
-                      <Box
-                        sx={{
-                          width: 32,
-                          height: 32,
-                          backgroundColor: 'secondary.main',
-                          borderRadius: 1
-                        }}
-                      />
-                    </Box>
-                    <Typography variant="h5" sx={{ fontWeight: 600, mb: 2, color: 'text.primary' }}>
-                      Proven Reliability
-                    </Typography>
-                    <Typography variant="body1" sx={{ color: 'text.secondary' }}>
-                      Enterprise-grade solutions with 99.9% uptime and 24/7 monitoring.
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </Grid>
+                    />
+                  </Box>
+                  <Typography variant="h5" sx={{ fontWeight: 600, mb: 2, color: 'text.primary' }}>
+                    Proven Reliability
+                  </Typography>
+                  <Typography variant="body1" sx={{ color: 'text.secondary' }}>
+                    Enterprise-grade solutions with 99.9% uptime and 24/7 monitoring.
+                  </Typography>
+                </CardContent>
+              </Card>
               
-              <Grid item xs={12} md={4}>
-                <Card 
-                  sx={{ 
-                    textAlign: 'center', 
-                    p: 3,
-                    height: '100%',
-                    transition: 'transform 0.2s ease-in-out',
-                    '&:hover': {
-                      transform: 'translateY(-4px)'
-                    }
-                  }}
-                  data-testid="feature-support"
-                >
-                  <CardContent>
+              <Card 
+                sx={{ 
+                  textAlign: 'center', 
+                  p: 3,
+                  height: '100%',
+                  transition: 'transform 0.2s ease-in-out',
+                  '&:hover': {
+                    transform: 'translateY(-4px)'
+                  }
+                }}
+                data-testid="feature-support"
+              >
+                <CardContent>
+                  <Box
+                    sx={{
+                      width: 64,
+                      height: 64,
+                      backgroundColor: 'primary.main',
+                      opacity: 0.1,
+                      borderRadius: 2,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      mx: 'auto',
+                      mb: 3
+                    }}
+                  >
                     <Box
                       sx={{
-                        width: 64,
-                        height: 64,
+                        width: 32,
+                        height: 32,
                         backgroundColor: 'primary.main',
-                        opacity: 0.1,
-                        borderRadius: 2,
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        mx: 'auto',
-                        mb: 3
+                        borderRadius: 1
                       }}
-                    >
-                      <Box
-                        sx={{
-                          width: 32,
-                          height: 32,
-                          backgroundColor: 'primary.main',
-                          borderRadius: 1
-                        }}
-                      />
-                    </Box>
-                    <Typography variant="h5" sx={{ fontWeight: 600, mb: 2, color: 'text.primary' }}>
-                      Expert Support
-                    </Typography>
-                    <Typography variant="body1" sx={{ color: 'text.secondary' }}>
-                      Dedicated support team with deep technical expertise and rapid response times.
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </Grid>
-            </Grid>
+                    />
+                  </Box>
+                  <Typography variant="h5" sx={{ fontWeight: 600, mb: 2, color: 'text.primary' }}>
+                    Expert Support
+                  </Typography>
+                  <Typography variant="body1" sx={{ color: 'text.secondary' }}>
+                    Dedicated support team with deep technical expertise and rapid response times.
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Box>
           </Container>
         </Box>
 
