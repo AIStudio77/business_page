@@ -1,10 +1,12 @@
 import { Button } from '@/components/ui/button';
 import { Sun, Moon, MessageCircle } from 'lucide-react';
+import { useLocation } from 'wouter';
 import { useStores, useStoreState } from '../providers/AppProviders';
 
 export default function Navigation() {
   const { themeStore } = useStores();
   const themeState = useStoreState(themeStore);
+  const [, setLocation] = useLocation();
 
   const handleThemeToggle = () => {
     themeStore.propose({ type: 'TOGGLE_THEME' });
@@ -15,7 +17,8 @@ export default function Navigation() {
   };
 
   const handleNavClick = (section: string) => {
-    console.log(`Navigate to ${section}`); // todo: remove mock functionality
+    // Use wouter's navigation
+    setLocation(`/${section}`);
   };
 
   return (

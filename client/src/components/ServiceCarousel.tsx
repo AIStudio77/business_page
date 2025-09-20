@@ -16,7 +16,7 @@ const imageMap = {
 };
 
 export default function ServiceCarousel() {
-  const { carouselStore } = useStores();
+  const { carouselStore, contentStore } = useStores();
   const carouselState = useStoreState(carouselStore);
   const [autoPlay, setAutoPlay] = useState(true);
 
@@ -58,10 +58,12 @@ export default function ServiceCarousel() {
 
   const handleMenuClick = (item: any) => {
     if (item.action === 'external') {
-      console.log(`Navigate to ${item.target}`); // todo: remove mock functionality
+      console.log(`Navigate to ${item.target}`); // todo: remove mock functionality - would navigate to actual pages
+      // In a real app, this would use router navigation
     } else {
       carouselStore.propose({ type: 'SELECT_MENU_ITEM', payload: item.target });
-      console.log(`Show content for ${item.target}`); // todo: remove mock functionality
+      // Show the content in a modal/overlay
+      contentStore.propose({ type: 'SHOW_CONTENT', payload: item.target });
     }
   };
 

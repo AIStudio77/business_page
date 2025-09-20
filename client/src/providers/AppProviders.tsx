@@ -1,20 +1,26 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
-import { ThemeStore } from '../core/ThemeStore';
-import { CarouselStore } from '../core/CarouselStore';
+import { AppBlueprint } from '../blueprints/AppBlueprint';
 
-// Context for stores
-const StoresContext = createContext<{
-  themeStore: ThemeStore;
-  carouselStore: CarouselStore;
-} | null>(null);
+// Context for blueprint system
+const BlueprintContext = createContext<AppBlueprint | null>(null);
 
-// Hook to access stores
-export function useStores() {
-  const context = useContext(StoresContext);
+// Hook to access the app blueprint and its stores
+export function useAppBlueprint() {
+  const context = useContext(BlueprintContext);
   if (!context) {
-    throw new Error('useStores must be used within AppProviders');
+    throw new Error('useAppBlueprint must be used within AppProviders');
   }
   return context;
+}
+
+// Hook to access stores through blueprint
+export function useStores() {
+  const appBlueprint = useAppBlueprint();
+  return {
+    themeStore: appBlueprint.getThemeStore(),
+    carouselStore: appBlueprint.getCarouselStore(),
+    contentStore: appBlueprint.getContentStore()
+  };
 }
 
 // Hook for specific store state
@@ -36,14 +42,15 @@ interface AppProvidersProps {
 }
 
 export function AppProviders({ children }: AppProvidersProps) {
-  const [stores] = useState(() => ({
-    themeStore: new ThemeStore(),
-    carouselStore: new CarouselStore()
-  }));
+  const [appBlueprint] = useState(() => {
+    const blueprint = new AppBlueprint();
+    blueprint.initializeChildren();
+    return blueprint;
+  });
 
   return (
-    <StoresContext.Provider value={stores}>
+    <BlueprintContext.Provider value={appBlueprint}>
       {children}
-    </StoresContext.Provider>
+    </BlueprintContext.Provider>
   );
 }

@@ -1,119 +1,291 @@
-import Navigation from './Navigation';
+import MuiNavigation from './MuiNavigation';
 import ServiceCarousel from './ServiceCarousel';
+import ContentDisplay from './ContentDisplay';
+import { Box, Container, Typography, Grid, Card, CardContent, Button } from '@mui/material';
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-background">
-      <Navigation />
+    <Box sx={{ minHeight: '100vh', backgroundColor: 'background.default' }}>
+      <MuiNavigation />
       
       {/* Main Content */}
-      <main className="pt-20">
+      <Box component="main" sx={{ pt: 10 }}>
         {/* Hero Section */}
-        <section className="px-6 py-12">
-          <div className="max-w-7xl mx-auto">
-            {/* Header */}
-            <div className="text-center mb-12">
-              <h1 className="text-5xl md:text-6xl font-display font-bold text-foreground mb-6">
-                Transform Your Space with
-                <span className="text-primary block mt-2">Smart Technology</span>
-              </h1>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                From intelligent home automation to enterprise IoT solutions, we bring cutting-edge technology 
-                that adapts to your needs and enhances your daily experience.
-              </p>
-            </div>
+        <Container maxWidth="lg" sx={{ py: 6 }}>
+          {/* Header */}
+          <Box sx={{ textAlign: 'center', mb: 8 }}>
+            <Typography 
+              variant="h1" 
+              sx={{ 
+                fontSize: { xs: '2.5rem', md: '4rem' },
+                fontWeight: 700,
+                color: 'text.primary',
+                mb: 3
+              }}
+            >
+              Transform Your Space with
+              <Typography 
+                component="span" 
+                sx={{ 
+                  color: 'primary.main',
+                  display: 'block',
+                  mt: 1
+                }}
+              >
+                Smart Technology
+              </Typography>
+            </Typography>
+            <Typography 
+              variant="h5" 
+              sx={{ 
+                color: 'text.secondary',
+                maxWidth: '600px',
+                mx: 'auto',
+                lineHeight: 1.6,
+                fontWeight: 400
+              }}
+            >
+              From intelligent home automation to enterprise IoT solutions, we bring cutting-edge technology 
+              that adapts to your needs and enhances your daily experience.
+            </Typography>
+          </Box>
 
-            {/* Service Carousel */}
-            <div data-testid="main-carousel">
-              <ServiceCarousel />
-            </div>
-          </div>
-        </section>
+          {/* Service Carousel */}
+          <Box data-testid="main-carousel">
+            <ServiceCarousel />
+          </Box>
+        </Container>
 
         {/* Features Grid */}
-        <section className="px-6 py-16 bg-muted/30">
-          <div className="max-w-7xl mx-auto">
-            <h2 className="text-3xl font-display font-bold text-center text-foreground mb-12">
+        <Box sx={{ py: 8, backgroundColor: 'background.paper' }}>
+          <Container maxWidth="lg">
+            <Typography 
+              variant="h2" 
+              sx={{ 
+                textAlign: 'center',
+                color: 'text.primary',
+                mb: 6,
+                fontWeight: 600
+              }}
+            >
               Why Choose TechFlow?
-            </h2>
+            </Typography>
             
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="text-center p-6 rounded-lg bg-card hover-elevate" data-testid="feature-innovation">
-                <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <div className="w-8 h-8 bg-primary rounded-sm" />
-                </div>
-                <h3 className="text-xl font-semibold mb-3 text-foreground">Innovation First</h3>
-                <p className="text-muted-foreground">
-                  We stay ahead of technology trends to bring you tomorrow's solutions today.
-                </p>
-              </div>
+            <Grid container spacing={4}>
+              <Grid item xs={12} md={4}>
+                <Card 
+                  sx={{ 
+                    textAlign: 'center', 
+                    p: 3,
+                    height: '100%',
+                    transition: 'transform 0.2s ease-in-out',
+                    '&:hover': {
+                      transform: 'translateY(-4px)'
+                    }
+                  }}
+                  data-testid="feature-innovation"
+                >
+                  <CardContent>
+                    <Box
+                      sx={{
+                        width: 64,
+                        height: 64,
+                        backgroundColor: 'primary.main',
+                        opacity: 0.1,
+                        borderRadius: 2,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        mx: 'auto',
+                        mb: 3
+                      }}
+                    >
+                      <Box
+                        sx={{
+                          width: 32,
+                          height: 32,
+                          backgroundColor: 'primary.main',
+                          borderRadius: 1
+                        }}
+                      />
+                    </Box>
+                    <Typography variant="h5" sx={{ fontWeight: 600, mb: 2, color: 'text.primary' }}>
+                      Innovation First
+                    </Typography>
+                    <Typography variant="body1" sx={{ color: 'text.secondary' }}>
+                      We stay ahead of technology trends to bring you tomorrow's solutions today.
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Grid>
               
-              <div className="text-center p-6 rounded-lg bg-card hover-elevate" data-testid="feature-reliability">
-                <div className="w-16 h-16 bg-accent/10 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <div className="w-8 h-8 bg-accent rounded-sm" />
-                </div>
-                <h3 className="text-xl font-semibold mb-3 text-foreground">Proven Reliability</h3>
-                <p className="text-muted-foreground">
-                  Enterprise-grade solutions with 99.9% uptime and 24/7 monitoring.
-                </p>
-              </div>
+              <Grid item xs={12} md={4}>
+                <Card 
+                  sx={{ 
+                    textAlign: 'center', 
+                    p: 3,
+                    height: '100%',
+                    transition: 'transform 0.2s ease-in-out',
+                    '&:hover': {
+                      transform: 'translateY(-4px)'
+                    }
+                  }}
+                  data-testid="feature-reliability"
+                >
+                  <CardContent>
+                    <Box
+                      sx={{
+                        width: 64,
+                        height: 64,
+                        backgroundColor: 'secondary.main',
+                        opacity: 0.1,
+                        borderRadius: 2,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        mx: 'auto',
+                        mb: 3
+                      }}
+                    >
+                      <Box
+                        sx={{
+                          width: 32,
+                          height: 32,
+                          backgroundColor: 'secondary.main',
+                          borderRadius: 1
+                        }}
+                      />
+                    </Box>
+                    <Typography variant="h5" sx={{ fontWeight: 600, mb: 2, color: 'text.primary' }}>
+                      Proven Reliability
+                    </Typography>
+                    <Typography variant="body1" sx={{ color: 'text.secondary' }}>
+                      Enterprise-grade solutions with 99.9% uptime and 24/7 monitoring.
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Grid>
               
-              <div className="text-center p-6 rounded-lg bg-card hover-elevate" data-testid="feature-support">
-                <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <div className="w-8 h-8 bg-primary rounded-sm" />
-                </div>
-                <h3 className="text-xl font-semibold mb-3 text-foreground">Expert Support</h3>
-                <p className="text-muted-foreground">
-                  Dedicated support team with deep technical expertise and rapid response times.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
+              <Grid item xs={12} md={4}>
+                <Card 
+                  sx={{ 
+                    textAlign: 'center', 
+                    p: 3,
+                    height: '100%',
+                    transition: 'transform 0.2s ease-in-out',
+                    '&:hover': {
+                      transform: 'translateY(-4px)'
+                    }
+                  }}
+                  data-testid="feature-support"
+                >
+                  <CardContent>
+                    <Box
+                      sx={{
+                        width: 64,
+                        height: 64,
+                        backgroundColor: 'primary.main',
+                        opacity: 0.1,
+                        borderRadius: 2,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        mx: 'auto',
+                        mb: 3
+                      }}
+                    >
+                      <Box
+                        sx={{
+                          width: 32,
+                          height: 32,
+                          backgroundColor: 'primary.main',
+                          borderRadius: 1
+                        }}
+                      />
+                    </Box>
+                    <Typography variant="h5" sx={{ fontWeight: 600, mb: 2, color: 'text.primary' }}>
+                      Expert Support
+                    </Typography>
+                    <Typography variant="body1" sx={{ color: 'text.secondary' }}>
+                      Dedicated support team with deep technical expertise and rapid response times.
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Grid>
+            </Grid>
+          </Container>
+        </Box>
 
         {/* CTA Section */}
-        <section className="px-6 py-16">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl font-display font-bold text-foreground mb-6">
-              Ready to Get Started?
-            </h2>
-            <p className="text-xl text-muted-foreground mb-8">
-              Let's discuss how our technology solutions can transform your space or business.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button 
-                className="px-8 py-3 bg-primary text-primary-foreground rounded-md font-semibold hover-elevate active-elevate-2"
-                onClick={() => console.log('Schedule consultation')} // todo: remove mock functionality
-                data-testid="cta-consultation"
-              >
-                Schedule Consultation
-              </button>
-              <button 
-                className="px-8 py-3 border border-border text-foreground rounded-md font-semibold hover-elevate active-elevate-2"
-                onClick={() => console.log('View portfolio')} // todo: remove mock functionality
-                data-testid="cta-portfolio"
-              >
-                View Our Work
-              </button>
-            </div>
-          </div>
-        </section>
-      </main>
+        <Container maxWidth="md" sx={{ py: 8, textAlign: 'center' }}>
+          <Typography 
+            variant="h2" 
+            sx={{ 
+              color: 'text.primary',
+              mb: 3,
+              fontWeight: 600
+            }}
+          >
+            Ready to Get Started?
+          </Typography>
+          <Typography 
+            variant="h5" 
+            sx={{ 
+              color: 'text.secondary',
+              mb: 4,
+              fontWeight: 400
+            }}
+          >
+            Let's discuss how our technology solutions can transform your space or business.
+          </Typography>
+          <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, gap: 2, justifyContent: 'center' }}>
+            <Button 
+              variant="contained"
+              size="large"
+              onClick={() => console.log('Schedule consultation')} // todo: remove mock functionality
+              data-testid="cta-consultation"
+              sx={{ px: 4, py: 1.5 }}
+            >
+              Schedule Consultation
+            </Button>
+            <Button 
+              variant="outlined"
+              size="large"
+              onClick={() => console.log('View portfolio')} // todo: remove mock functionality
+              data-testid="cta-portfolio"
+              sx={{ px: 4, py: 1.5 }}
+            >
+              View Our Work
+            </Button>
+          </Box>
+        </Container>
+      </Box>
 
       {/* Footer */}
-      <footer className="bg-muted/50 px-6 py-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="flex items-center gap-3">
-              <div className="w-6 h-6 bg-primary rounded-sm" />
-              <span className="font-display font-semibold text-foreground">TechFlow Solutions</span>
-            </div>
-            <p className="text-sm text-muted-foreground">
+      <Box sx={{ backgroundColor: 'background.paper', py: 4 }}>
+        <Container maxWidth="lg">
+          <Box sx={{ 
+            display: 'flex', 
+            flexDirection: { xs: 'column', md: 'row' },
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            gap: 2
+          }}>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+              <Box sx={{ width: 24, height: 24, backgroundColor: 'primary.main', borderRadius: 0.5 }} />
+              <Typography sx={{ fontWeight: 600, color: 'text.primary' }}>
+                TechFlow Solutions
+              </Typography>
+            </Box>
+            <Typography variant="body2" sx={{ color: 'text.secondary' }}>
               © 2024 TechFlow Solutions. Transforming spaces through technology.
-            </p>
-          </div>
-        </div>
-      </footer>
-    </div>
+            </Typography>
+          </Box>
+        </Container>
+      </Box>
+
+      {/* Content Display Modal */}
+      <ContentDisplay />
+    </Box>
   );
 }
